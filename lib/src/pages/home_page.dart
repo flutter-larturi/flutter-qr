@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
       futureString.rawContent = e.toString();
     }
 
-    if ( futureString != null ) {
+    if ( futureString.rawContent != '' &&  futureString != null) { 
       
       final scan = ScanModel(valor: futureString.rawContent);
       scansBloc.agregarScan(scan);      
@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
     switch (paginaActual) {
       case 0: return MapasPage();
       case 1: return DireccionesPage();
-      default: return MapasPage();
+      default: return DireccionesPage();
     }
   }
 

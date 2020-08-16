@@ -13,8 +13,10 @@ class ScanModel {
     }){
       if (valor.contains('http')) {
         this.tipo = 'http';
-      } else {
+      } else if (valor.contains('geo:')) {
         this.tipo = 'geo';
+      } else {
+        this.tipo = 'other';
       }
     }
 
@@ -32,10 +34,14 @@ class ScanModel {
 
     LatLng getLatLng() {
 
+      double lat = 0;
+      double lng = 0;
       final latlong = valor.substring(4).split(',');
-      final lat = double.parse(latlong[0]);
-      final lng = double.parse(latlong[1]);
 
+      lat = double.parse(latlong[0]);
+      lng = double.parse(latlong[1]);
+      
+      
       return LatLng(lat, lng);
 
     }
